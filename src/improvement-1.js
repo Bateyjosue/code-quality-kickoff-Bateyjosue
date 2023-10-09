@@ -5,12 +5,12 @@
  */
 
 // FUNCTION 1
-export default function cntRbt(ls) {
-  var cnt = 0;
-  for (var i = 0; i < ls.length; i++) {
-    if (ls[i] == "R") {
-      cnt++;
+export default function countRs(str) {
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] == "R") {
+      count++;
     }
   }
-  return cnt;
+  return count;
 }
