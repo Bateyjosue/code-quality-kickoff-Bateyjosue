@@ -6,11 +6,18 @@
  * @returns {number}
  */
 export default function penaltyPoints(password = "") {
-  // The following line ensures, that password is always a string, like the number 128 -> string "128"
   if (typeof password !== "string") password = String(password);
+  if(password == 'null') return 0
+  
+  let re = /(.)\1+/g
+  let penalty = 0;
+  let matches = password.match(re);
 
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  // * * * INSERT YOUR CODE HERE * * * * * * * * * * * * * *
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  //
+  if(matches){
+    matches.forEach(match => {
+      penalty += match.length >= 3? 2 : 1;
+    })
+  } else penalty = 0
+
+  return penalty;
 }
