@@ -7,9 +7,16 @@ export const forbiddenPasswords = ["amG84h6yeQ", "mc9Q20pdjH", "jnT6Q2f8U5"];
  * @returns {boolean}
  */
 export default function isValidPassword(password = "") {
-  // The following line ensures, that password is always a string, like the number 128 -> string "128"
+ 
   if (typeof password !== "string") password = String(password);
 
+  /*
+    pattern to check the length of the password,
+    this regular expression requires that the string starts with a word character, 
+    contains at least one lowercase letter, 
+    at least one uppercase letter, 
+    and at least one letter (regardless of case)
+  */
   const re = new RegExp('^(?=.*\w)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{10,10}$', 'mg')
   const setOfPassword = new Set([...password]);
   
