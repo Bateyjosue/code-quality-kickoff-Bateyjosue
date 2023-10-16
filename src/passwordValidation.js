@@ -14,7 +14,7 @@ export default function isValidPassword(password = "") {
   const setOfPassword = new Set([...password]);
   
   if (!re.test(password)) return false
-  else if(forbiddenPasswords.includes(password)) return false
-  else if(setOfPassword.size < 4) return false
-  else return true
+  if(forbiddenPasswords.includes(password)) return false
+  if(setOfPassword.size < 4) return false
+  return true
 }
