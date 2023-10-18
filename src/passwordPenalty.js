@@ -9,15 +9,11 @@ export default function penaltyPoints(password = "") {
   if (typeof password !== "string") password = String(password);
   if(password == 'null') return 0
   
-  let re = /(.)\1+/g
+  let regexPattern = /(.)\1+/g
   let penalty = 0;
-  let matches = password.match(re);
-
-  if(matches){
-    matches.forEach(match => {
-      penalty += match.length >= 3? 2 : 1;
+  let matches = password.match(regexPattern);
+    matches?.forEach(match => {
+      penalty += match.length >= 3? 2: 1;
     })
-  } else penalty = 0
-
   return penalty;
 }
